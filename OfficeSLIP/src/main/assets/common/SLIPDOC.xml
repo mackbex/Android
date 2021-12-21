@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Document>
+    <DocData>
+        <Field TITLE="" NAME="cabinet"  SIZE="8" />
+        <Field TITLE="" NAME="folder"   SIZE="24" VALUE="SLIPDOC" />
+        <Field TITLE="" NAME="doc_irn"  SIZE="20" />
+        <Field TITLE="" NAME="sdoc_no"  SIZE="24" />
+        <Field TITLE="" NAME="sdoc_type" SIZE="4" />
+        <Field TITLE="" NAME="sdoc_one" SIZE="1" VALUE="0" />
+        <Field TITLE="" NAME="sdoc_secu"    SIZE="1" VALUE="0" />
+        <Field TITLE="" NAME="sdoc_month"   SIZE="6" />
+        <Field TITLE="" NAME="sdoc_step"    SIZE="1" VALUE="0" />
+        <Field TITLE="" NAME="sdoc_status"  SIZE="1" VALUE="1" />
+        <Field TITLE="" NAME="sdoc_flag"    SIZE="1" VALUE="1" />
+        <Field TITLE="" NAME="sdoc_system"  SIZE="1" VALUE="0" />
+        <Field TITLE="" NAME="sdoc_name"    SIZE="64" />
+        <Field TITLE="" NAME="sdoc_after"   SIZE="1" VALUE="0" />
+        <Field TITLE="" NAME="co_no"    SIZE="4" />
+        <Field TITLE="" NAME="part_no"  SIZE="6" />
+        <Field TITLE="" NAME="info_etc" SIZE="16" />
+        <Field TITLE="" NAME="hg_date"  SIZE="8" />
+        <Field TITLE="" NAME="update_time"  SIZE="20" />
+        <Field TITLE="" NAME="slip_cnt" SIZE="4" />
+        <Field TITLE="" NAME="file_cnt" SIZE="8" />
+        <Field TITLE="" NAME="file_size"    SIZE="8" />
+        <Field TITLE="" NAME="reg_user" SIZE="16" />
+        <Field TITLE="" NAME="REG_USERNM"   SIZE="20" />
+        <Field TITLE="" NAME="reg_time" SIZE="20" />
+        <Field TITLE="" NAME="sdocno_index" SIZE="4" />
+        <Field TITLE="" NAME="sdocno_doc"   SIZE="24" />
+        <Field TITLE="" NAME="sdocno_top"   SIZE="24" />
+        <Field TITLE="" NAME="SLIP_DEVICE"  SIZE="2" VALUE="AN" />
+        <Field TITLE="" NAME="WORK_GROUP"   SIZE="2" VALUE="" />
+        <Field TITLE="" NAME="COPY_FLAG"    SIZE="1" VALUE="0" />
+        <Field TITLE="" NAME="security" SIZE="2" />
+    </DocData>
+    <DocList Load="1" Table="img_slip_t" Field="cabinet;folder;doc_irn;sdoc_no;slip_no;file_cnt;file_size;update_time;slip_flag;slip_comment">
+        <DOC cabinet="" Folder="SLIP" doc_irn="" sdoc_no="" slip_no="" Comment="SLIP" File="" file_cnt="" doc_status="" bCompress="" file_size="" slip_flag="1" update_time="" />
+    </DocList>
+    <Page Num="1-1" Title="" PageFlag="C" Rect="0,0,5943,8438" Comment="">
+        <Fill Type="FILL" Style="Default">
+            <Color Type="RGB">255,255,255</Color>
+            <Fill>100</Fill>
+            <Image Type="IMAGEBOX" Flag="Center|VCenter" DPI="200" File="$DOC(1,1)"></Image>
+        </Fill>
+    </Page>
+</Document>

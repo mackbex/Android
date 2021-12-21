@@ -1,0 +1,35 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.36'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+
+    ext {
+        versionCode = 8
+        versionName = '1.0.7'
+        kotlin_version = "1.4.21"
+        opencvDir = '/Users/Mackbex/Documents/Projects/Project_Android/OpenCV_SDK_4.5.1'
+
+        compose_version = '1.1.0-alpha06'
+        compileSdkVersion = 30
+        minSdkVersion = 23
+        targetSdkVersion = 30
+        buildToolsVersion = "30.0.2"
+        rootProject.kotlin_version = '1.5.10'
+    }
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

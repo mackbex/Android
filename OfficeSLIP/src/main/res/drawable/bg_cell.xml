@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true" android:drawable="@drawable/border_bottom_hover">
+
+    </item>
+
+    <item android:state_focused="true" android:drawable="@drawable/border_bottom_hover">
+
+    </item>
+
+    <item android:drawable="@drawable/border_bottom_bg">
+
+    </item>
+</selector>
+<!--<layer-btn_toggle_navi xmlns:android="http://schemas.android.com/apk/res/android">-->
+    <!--<item android:top="-2dp" android:left="-2dp" android:right="-2dp">-->
+        <!--<shape android:shape="rectangle">-->
+            <!--<stroke android:width="0.5dp" android:color="@color/colorUICellBorder"  />-->
+            <!--<solid android:color="@color/colorUICellBackground" />-->
+        <!--</shape>-->
+
+    <!--</item>-->
+<!--</layer-btn_toggle_navi>-->
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+    <!--<item android:state_pressed="true" android:top="-2dp" android:left="-2dp" android:right="-2dp">-->
+    <!--<shape android:shape="rectangle">-->
+    <!--<stroke android:width="0.5dp" android:color="@color/colorUICellBorder" />-->
+    <!--<solid android:color="@color/colorUICellHoverBackground" />-->
+    <!--</shape>-->
+    <!--</item>-->
+    <!--<item android:state_focused="true" android:top="-2dp" android:left="-2dp" android:right="-2dp">-->
+    <!--<shape android:shape="rectangle">-->
+    <!--<stroke android:width="0.5dp" android:color="@color/colorUICellBorder" />-->
+    <!--<solid android:color="@color/colorUICellHoverBackground" />-->
+    <!--</shape>-->
+    <!--</item>-->
+    <!--<item android:top="-2dp" android:left="-2dp" android:right="-2dp">-->
+    <!--<shape android:shape="rectangle">-->
+    <!--<stroke android:width=z"0.5dp" android:color="@color/colorUICellBorder" />-->
+    <!--<solid android:color="@color/colorUICellBackground" />-->
+    <!--</shape>-->
+    <!--</item>-->
+
+
+
+    <!--</selector>-->

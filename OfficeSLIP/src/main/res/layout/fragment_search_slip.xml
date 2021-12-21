@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.officeslip.ui.search.SearchSlipViewModel" />
+
+        <variable
+            name="sharedViewModel"
+            type="com.officeslip.ui.main.SharedMainViewModel" />
+
+        <variable
+            name="mainViewModel"
+            type="com.officeslip.ui.main.MainViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.officeslip.ui.search.SearchSlipFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_toggleNavi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnToggleNavi"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> mainViewModel.toggleNavi()}"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_list"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white"
+
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/mtl_toggleNavi"
+                    app:layout_constraintRight_toLeftOf="@id/mtl_searchOption"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@string/search_slip"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </HorizontalScrollView>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_searchOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnSearchOption"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> fragment.moveToSearchOption()}"
+                        android:padding="14dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_search"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white"
+
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <EditText
+                android:id="@+id/view_etInnerSearch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autofillHints="@string/input_slipkind_search"
+                android:background="@android:color/transparent"
+                android:focusableInTouchMode="true"
+                android:hint="@string/input_slip_result_search"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="10dp"
+                android:text="@={viewModel.keyword}"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cellBorder"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_etInnerSearch" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            app:layout_constraintTop_toBottomOf="@id/view_line"
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="0dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view_rcSearchSlip"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:init="@{viewModel.searchResult}"
+                android:orientation="vertical"
+                android:splitMotionEvents="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                tools:listitem="@layout/search_slip_list_item" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

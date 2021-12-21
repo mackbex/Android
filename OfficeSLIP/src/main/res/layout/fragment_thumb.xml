@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="sharedViewModel"
+            type="com.officeslip.ui.viewer.SharedSlipViewerViewModel" />
+        <variable
+            name="fragment"
+            type="com.officeslip.ui.viewer.thumb.ThumbViewerFragment" />
+        <variable
+            name="viewModel"
+            type="com.officeslip.ui.viewer.thumb.ThumbViewerFragmentViewModel" />
+        <variable
+            name="parentActivity"
+            type="com.officeslip.ui.viewer.SlipViewerActivity" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnClose"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_close"
+                        android:onClick="@{() -> fragment.backToOriginal()}"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/mtl_close"
+                    app:layout_constraintRight_toLeftOf="@id/mtl_confirm"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@{sharedViewModel.title}"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </HorizontalScrollView>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnConfirm"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_check"
+                        android:onClick="@{() -> parentActivity.confirm()}"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_thumb"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_cell"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toTopOf="@+id/layout_wrapperCtl"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_wrapperCtl"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_ctl"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/view_rippleBtnZoomOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    app:mrl_rippleColor="#ff000000"
+                    app:mrl_rippleAlpha="0.05"
+                    app:mrl_rippleDimension="14dp"
+                    app:layout_constraintRight_toLeftOf="@+id/view_rippleBtnZoomIn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleDelayClick="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    >
+                    <ImageButton
+                        android:id="@+id/view_BtnZoomOut"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_zoomout"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"
+                        android:padding="12dp"
+                        android:onClick="@{() -> fragment.zoomOut()}"
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/view_rippleBtnZoomIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    app:mrl_rippleColor="#ff000000"
+                    app:mrl_rippleAlpha="0.05"
+                    app:mrl_rippleDimension="14dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleDelayClick="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="4dp"
+                    >
+                    <ImageButton
+                        android:id="@+id/view_BtnZoomIn"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_zoomin"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"
+                        android:layout_gravity="center"
+                        android:padding="12dp"
+                        android:onClick="@{() -> fragment.zoomIn()}"
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

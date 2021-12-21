@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="com.officeslip.ConstantsKt"/>
+        <variable
+            name="viewModel"
+            type="com.officeslip.ui.viewer.original.SlipViewerFragmentViewModel" />
+
+        <variable
+            name="parentViewModel"
+            type="com.officeslip.ui.viewer.SlipViewerViewModel" />
+        <variable
+            name="parentActivity"
+            type="com.officeslip.ui.viewer.SlipViewerActivity" />
+        <variable
+            name="fragment"
+            type="com.officeslip.ui.viewer.original.SlipViewerFragment" />
+        <variable
+            name="viewFlag"
+            type="com.officeslip.ViewFlag" />
+        <variable
+            name="sharedViewModel"
+            type="com.officeslip.ui.viewer.SharedSlipViewerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+<!--                <com.balysv.materialripple.MaterialRippleLayout-->
+<!--                    android:id="@+id/mtl_close"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:mrl_rippleAlpha="0.1"-->
+<!--                    app:mrl_rippleColor="@android:color/white"-->
+<!--                    app:mrl_rippleDelayClick="false"-->
+<!--                    app:mrl_rippleDimension="14dp">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/view_btnClose"-->
+<!--                        android:layout_width="60dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:gravity="center"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:text="@{@string/slipIndexForm(sharedViewModel.curIdx+1, sharedViewModel.listSlip.size())}"-->
+<!--                        android:textColor="@android:color/white"-->
+<!--                        android:tint="@android:color/white" />-->
+<!--                </com.balysv.materialripple.MaterialRippleLayout>-->
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnClose"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_close"
+                        android:onClick="@{() -> fragment.confirm()}"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/mtl_close"
+                    app:layout_constraintRight_toLeftOf="@id/mtl_thumbView"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@{@string/slipTitleForm(sharedViewModel.title, sharedViewModel.curIdx+1, sharedViewModel.listSlip.size())}"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </HorizontalScrollView>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_confirm"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    android:visibility="@{sharedViewModel.viewFlag == viewFlag.Edit || sharedViewModel.viewFlag == viewFlag.Add ? View.VISIBLE : View.GONE }"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+
+                    <Button
+                        android:id="@+id/view_btnConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="@{() -> fragment.confirm()}"
+                        android:padding="4dp"
+                        android:textColor="@android:color/white"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:text="@string/use"
+                        android:background="@color/transparent"
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_thumbView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/mtl_option"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    android:visibility="@{sharedViewModel.viewFlag == viewFlag.Search ? View.VISIBLE : View.GONE }"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnThumbView"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_thumb"
+                        android:onClick="@{() -> fragment.moveToThumbView()}"
+                        android:textColor="@android:color/white"
+                        app:tint="@android:color/white" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    android:visibility="@{sharedViewModel.viewFlag == viewFlag.Search ? View.VISIBLE : View.GONE }"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/mtl_viewOption"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_option"
+                        android:onClick="@{fragment.openViewerOption}"
+                        android:textColor="@android:color/white"
+                        app:tint="@android:color/white" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <!--                <com.balysv.materialripple.MaterialRippleLayout-->
+<!--                    android:id="@+id/mtl_searchOption"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintRight_toLeftOf="@+id/mtl_confirm"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:mrl_rippleAlpha="0.1"-->
+<!--                    app:mrl_rippleColor="@android:color/white"-->
+<!--                    app:mrl_rippleDelayClick="false"-->
+<!--                    android:visibility="@{sharedViewModel.viewFlag == viewFlag.Search ? View.VISIBLE : View.GONE }"-->
+<!--                    app:mrl_rippleDimension="14dp">-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/view_btnSearchOption"-->
+<!--                        android:layout_width="?attr/actionBarSize"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:onClick="@{() -> fragment.moveToThumbView()}"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_thumb"-->
+<!--                        android:textColor="@android:color/white"-->
+<!--                        android:tint="@android:color/white"-->
+
+<!--                        />-->
+<!--                </com.balysv.materialripple.MaterialRippleLayout>-->
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pager"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/layout_wrapperCtl"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_wrapperCtl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_ctl"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                     app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/btn_remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:text="@string/remove"
+                        android:textColor="@android:color/holo_red_light"
+                        android:visibility="@{sharedViewModel.listSlip.get(sharedViewModel.curIdx).slipFlag == viewFlag.Search ? View.GONE : View.VISIBLE }"
+                        android:onClick="@{() ->fragment.removeCurSlip()}"
+                        />
+
+                    <Button
+                        android:id="@+id/btn_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:text="@string/edit"
+                        android:textColor="@color/textBtnColor"
+                        android:onClick="@{() -> fragment.moveToEdit()}"
+                        android:visibility="@{sharedViewModel.listSlip.get(sharedViewModel.curIdx).slipFlag == viewFlag.Search ? View.GONE : View.VISIBLE }"
+                        />
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/btn_pinch"-->
+<!--                        android:layout_width="52dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_pointer" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/btn_pen"-->
+<!--                        android:layout_width="52dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_pen"-->
+<!--                        android:tag="PEN"-->
+<!--                        android:visibility="invisible" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/btn_rect"-->
+<!--                        android:layout_width="52dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_rectangle"-->
+<!--                        android:tag="RECT"-->
+<!--                        android:visibility="invisible" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/btn_circle"-->
+<!--                        android:layout_width="52dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_circle"-->
+<!--                        android:tag="CIRCLE"-->
+<!--                        android:visibility="invisible" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/btn_memo"-->
+<!--                        android:layout_width="52dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_memo"-->
+<!--                        android:tag="MEMO"-->
+<!--                        android:visibility="invisible" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/btn_rotate"-->
+<!--                        android:layout_width="52dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_rotate"-->
+<!--                        android:tag="ROTATE"-->
+<!--                        android:visibility="invisible" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/btn_crop"-->
+<!--                        android:layout_width="52dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:padding="14dp"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/ic_crop"-->
+<!--                        android:tag="CROP" />-->
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

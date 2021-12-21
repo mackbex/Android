@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="splash"
+            type="com.officeslip.data.model.Splash" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_splash"
+        android:background="@android:color/white"
+        tools:context=".ui.splash.SplashActivity"
+      >
+
+    <ImageView
+        android:id="@+id/view_imageLogo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/ic_imgicon"
+        />
+
+    <LinearLayout
+        android:id="@+id/view_layoutProgress"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/view_imageLogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <ProgressBar
+            android:id="@+id/view_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:padding="10dp"
+            android:indeterminateTint="@color/colorPrimary"
+            android:layout_marginBottom="10dp"
+            android:progress="0"/>
+
+        <TextView
+            android:id="@+id/view_textSplash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{splash.version}"
+            android:layout_gravity="center"
+            />
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Click"-->
+<!--            android:id="@+id/btnTest"-->
+<!--            android:layout_gravity="center"-->
+<!--            />-->
+    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

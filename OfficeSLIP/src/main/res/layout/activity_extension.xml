@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="extFlag"
+            type="com.officeslip.ExtensionFlag" />
+        <variable
+            name="viewModel"
+            type="com.officeslip.ui.addslip.extension.ExtensionViewModel" />
+        <variable
+            name="activity"
+            type="com.officeslip.ui.addslip.extension.ExtensionActivity" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnClose"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> activity.closeActivity(activity.RESULT_CANCELED)}"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_close"
+                        android:textColor="@android:color/white"
+                        app:tint="@android:color/white"
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="70dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@string/select_user"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </HorizontalScrollView>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_confirm"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+
+                    <Button
+                        android:id="@+id/view_btnConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="@{() -> activity.confirm()}"
+                        android:padding="4dp"
+                        android:textColor="@android:color/white"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:text="@string/select"
+                        android:background="@color/transparent"
+                        />
+
+
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            <EditText
+                android:id="@+id/et_searchUser"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:focusableInTouchMode="true"
+                android:hint="@string/input_user_info"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:text="@={viewModel.keyword}"
+                android:autofillHints="@string/input_user_info"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:imeOptions="actionSearch"
+                android:onEditorAction="@{(view, actionId, event) -> activity.searchUser(view, actionId, event)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cellBorder"
+                app:layout_constraintTop_toBottomOf="@id/et_searchUser"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view_rcUserInfo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:init="@{viewModel.userList}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/view_line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/select_ext_user_list_item"
+                android:splitMotionEvents="false"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+</layout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:id="@+id/layout_bs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:behavior_peekHeight="240dp"
+        app:behavior_hideable="false"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:background="@drawable/bottom_sheet_header"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select"
+            android:textAlignment="center"
+            android:paddingBottom="10dp"
+            android:textSize="10sp"
+            />
+        <include layout="@layout/cell_line" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textBtnColor"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/history"
+            android:tag="SLIP_VIEWER_HISTORY"
+            />
+
+        <include layout="@layout/cell_line" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textBtnColor"
+            android:background="?android:attr/selectableItemBackground"
+            android:tag="SLIP_VIEWER_PROPERTY"
+            android:text="@string/property" />
+        <include layout="@layout/cell_line" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/cancel"
+            android:tag="CLOSE_DIALOG"
+            />
+        <include layout="@layout/cell_line" />
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

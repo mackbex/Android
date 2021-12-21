@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">material</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="appbar_title">Material</string>
+    <string name="appbar_action_search">Search</string>
+    <string name="appbar_action_light_theme">Light theme</string>
+    <string name="appbar_action_dark_theme">Dark theme</string>
+
+    <string name="card_basic_btn_like">Like</string>
+
+    <string name="transition_main_item_click">transition_main_item_click</string>
+
+    <string name="snackbar_action_dismiss">Dismiss</string>
+    <string name="nav_menu_favorite">Favorite</string>
+    <string name="nav_menu_about">About</string>
+    <string name="nav_menu_home">Home</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+</resources>

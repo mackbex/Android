@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <shape android:shape="rectangle" >
+
+            <!-- end colour at top, start colour at bottom -->
+            <!-- Your colors can include hex alpha values -->
+            <!-- #ff000000 is fully transparent black -->
+            <!-- #00000000 is non transparent black -->
+            <!-- There are more options in that link to control the gradient more -->
+            <gradient
+                android:angle="270"
+                android:endColor="#476AAF"
+                android:startColor="@color/colorPrimary"/>
+
+<!--            <gradient-->
+<!--                android:centerX="0.5"-->
+<!--                android:centerY="1"-->
+<!--                android:type="radial"-->
+<!--                android:gradientRadius="200%p"-->
+<!--                android:startColor="#476AAF"-->
+<!--                android:endColor="@color/colorPrimary" />-->
+
+<!--            <size android:height="40dp" android:width="500dp" />-->
+        </shape>
+
+    </item>
+    <!-- top, bottom left and right adds padding -->
+
+</layer-list>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--    <item-->
+    <!--        android:title="@string/officeslip"-->
+    <!--        app:showAsAction="ifRoom"-->
+    <!--        android:orderInCategory="3"-->
+    <!--        android:icon="@drawable/ic_logo">-->
+    <item android:title="@string/officeslip">
+        <menu>
+
+            <group android:checkableBehavior="single">
+                <!--        <menu>-->
+                <item
+                    android:id="@+id/menu_add_slip"
+                    android:icon="@drawable/ic_nav_addslip"
+                    android:orderInCategory="1"
+                    android:title="@string/add_slip"
+                    app:showAsAction="ifRoom" />
+
+                <item android:id="@+id/menu_search_slip"
+                    android:title="@string/navi_menu_search_slip"
+                    app:showAsAction="ifRoom"
+                    android:orderInCategory="2"
+                    android:icon="@drawable/ic_nav_searchslip"/>
+
+
+                <item android:id="@+id/menu_qr"
+                    android:title="@string/navi_menu_receive_slip"
+                    app:showAsAction="ifRoom"
+                    android:orderInCategory="2"
+                    android:icon="@drawable/ic_nav_card"/>
+
+                <item
+                    android:id="@+id/menu_setting"
+                    android:icon="@drawable/ic_nav_setting"
+                    android:orderInCategory="3"
+                    android:title="@string/setting"
+                    app:showAsAction="ifRoom" />
+                <!--        </menu>-->
+            </group>
+        </menu>
+    </item>
+    <!--    </item>-->
+
+    <!--    <item android:id="@+id/a"-->
+    <!--        android:title="@string/setting"-->
+    <!--        app:showAsAction="ifRoom"-->
+    <!--        android:orderInCategory="3"-->
+    <!--        android:icon="@drawable/ic_logo"/>-->
+    <!--    <item android:id="@+id/b"-->
+    <!--        android:title="@string/setting"-->
+    <!--        app:showAsAction="ifRoom"-->
+    <!--        android:orderInCategory="3"-->
+    <!--        android:icon="@drawable/ic_logo"/>-->
+
+    <!--    <item android:id="@+id/e"-->
+    <!--        android:title="@string/setting"-->
+    <!--        app:showAsAction="ifRoom"-->
+    <!--        android:orderInCategory="3"-->
+    <!--        android:icon="@drawable/ic_logo"/>-->
+
+    <!--    <item android:id="@+id/f"-->
+    <!--        android:title="@string/setting"-->
+    <!--        app:showAsAction="ifRoom"-->
+    <!--        android:orderInCategory="3"-->
+    <!--        android:icon="@drawable/ic_logo"/>-->
+
+
+    <!--    <item android:id="@+id/g"-->
+    <!--        android:title="@string/setting"-->
+    <!--        app:showAsAction="ifRoom"-->
+    <!--        android:orderInCategory="3"-->
+    <!--        android:icon="@drawable/ic_logo"/>-->
+
+
+</menu>

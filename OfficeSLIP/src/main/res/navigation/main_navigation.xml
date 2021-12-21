@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/add_slip"
+    android:id="@+id/main_navigation">
+
+
+    <keep_state_fragment
+        android:id="@+id/add_slip"
+        android:name="com.officeslip.ui.addslip.AddSlipFragment"
+        android:label="add_slip"
+        tools:layout="@layout/fragment_addslip" >
+
+    </keep_state_fragment>
+    <keep_state_fragment
+        android:id="@+id/search_slip"
+        android:name="com.officeslip.ui.search.SearchSlipFragment"
+        android:label="search_slip"
+        tools:layout="@layout/fragment_search_slip" >
+
+    </keep_state_fragment>
+    <keep_state_fragment
+        android:id="@+id/setting"
+        android:name="com.officeslip.ui.setting.SettingFragment"
+        android:label="setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>

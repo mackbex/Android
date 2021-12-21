@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.officeslip.ui.viewer.SlipViewerViewModel" />
+
+        <variable
+            name="activity"
+            type="com.officeslip.ui.viewer.SlipViewerActivity" />
+
+        <variable
+            name="sharedViewModel"
+            type="com.officeslip.ui.viewer.SharedSlipViewerViewModel" />
+
+    </data>
+    <FrameLayout
+        android:id="@+id/fragment_container_viewer"
+        android:layout_width="match_parent"
+        android:background="@android:color/black"
+        android:layout_height="match_parent" />
+</layout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="historyItem"
+            type="com.officeslip.data.model.HistoryItem" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+
+
+            <LinearLayout
+                android:id="@+id/view_layout"
+                android:tag="SHOW_SLIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    >
+
+                    <TextView
+                        android:id="@+id/view_textSDocName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="@{historyItem.sdocName, default=``}"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_folder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/tv_title"
+                        app:layout_constraintLeft_toLeftOf="@id/iv_circle"
+                        app:layout_constraintRight_toRightOf="@id/iv_circle"
+                        android:text="@{`SLIPDOC`.equals(historyItem.folder.toUpperCase()) ? @string/folder_slipdoc : @string/folder_addfile, default=``}"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="12sp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/iv_circle"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_folder"
+                        app:layout_constraintLeft_toLeftOf="@id/view_textSDocName"
+                        android:layout_marginTop="@dimen/sliplist_top_row_1"
+                        android:textColor="#000"
+                        android:src="@{TextUtils.equals(historyItem.icon,`0`) ? @drawable/bg_circle_green: TextUtils.equals(historyItem.icon,`1`) ? @drawable/bg_circle_red: TextUtils.equals(historyItem.icon,`2`) ? @drawable/bg_circle_yellow: @drawable/bg_circle_green, default=@drawable/bg_circle_green}"
+                        android:textSize="12sp"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/view_textSDocName"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        android:layout_marginTop="@dimen/sliplist_top_row_1"
+                        android:layout_marginStart="@dimen/sliplist_left_row_1"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="@{historyItem.title}"
+                        android:textSize="12sp"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/tv_regUser"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@+id/tv_title"
+                        app:layout_constraintRight_toRightOf="@id/view_textSDocName"
+                        android:layout_marginStart="4dp"
+                        android:ellipsize="end"
+                        android:text="@{historyItem.regTime, default=``}"
+                        android:maxLines="1"
+                        android:textSize="12sp"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/tv_cabinet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/iv_circle"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="@{@string/slipItemForm(historyItem.historyUserNm, historyItem.historyUserNm)}"
+                        android:textSize="12sp"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/cellBorder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

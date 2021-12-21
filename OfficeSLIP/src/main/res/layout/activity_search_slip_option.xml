@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.officeslip.ui.search.option.SearchSlipOptionViewModel" />
+
+        <variable
+            name="activity"
+            type="com.officeslip.ui.search.option.SearchSlipOptionActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnClose"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> activity.close()}"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_close"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white"
+
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/mtl_close"
+                    app:layout_constraintRight_toLeftOf="@id/mtl_apply"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@string/search_slip"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </HorizontalScrollView>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_apply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnRegister"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> activity.apply()}"
+                        android:padding="14dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_check"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white"
+
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/viewBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_margin="14dp"
+                        android:gravity="bottom"
+                        android:text="@string/search_period" />
+
+                    <include layout="@layout/cell_line" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="@{() -> activity.openCalendar(viewTvFromDate)}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/from_date"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/view_tvFromDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:tag="FROM_DATE"
+                            android:text="@{viewModel.searchSlipOption.fromDate}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/img_fromDateArrow"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_fromDateArrow"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:src="@drawable/arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/to_date"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:tag="TO_DATE"
+                            android:text="@{viewModel.searchSlipOption.toDate}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/img_toDateArrow"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/img_toDateArrow"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:src="@drawable/arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_margin="14dp"
+                        android:gravity="bottom"
+                        android:text="@string/document_info" />
+
+                    <include layout="@layout/cell_line" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/sdocName"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+                            android:gravity="end"
+                            android:hint="@string/input_sdocName"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:text="@={viewModel.searchSlipOption.sdocName}"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="@{()->activity.openSlipKindActivity()}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/slipKind"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{viewModel.searchSlipOption.slipKindNo != `-1` ? viewModel.searchSlipOption.slipKindNm : @string/slipKindForm(viewModel.searchSlipOption.slipKindNm,viewModel.searchSlipOption.slipKindNo)}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/img_slipKindArrow"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_slipKindArrow"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:src="@drawable/arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/category"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <info.hoang8f.android.segmented.SegmentedGroup
+                            android:id="@+id/seg_typeGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            segmentedgroup:sc_checked_text_color="@android:color/white"
+                            segmentedgroup:sc_tint_color="@color/colorPrimary"
+                            android:orientation="horizontal"
+                            segmentedgroup:sc_border_width="2dp"
+                            segmentedgroup:layout_constraintRight_toRightOf="parent"
+                            segmentedgroup:layout_constraintTop_toTopOf="parent"
+                            segmentedgroup:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            segmentedgroup:sc_corner_radius="5dp">
+
+                            <CheckBox
+                                android:id="@+id/seg_slip"
+                                android:button="@android:color/transparent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/segment_image"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:checked="@={viewModel.folderSlip}"
+                                />
+
+                            <CheckBox
+                                android:id="@+id/seg_addfile"
+                                android:button="@android:color/transparent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/segment_file"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:checked="@={viewModel.folderAttach}"
+                                />
+
+                        </info.hoang8f.android.segmented.SegmentedGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/status"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <info.hoang8f.android.segmented.SegmentedGroup
+                            android:id="@+id/seg_stepGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            segmentedgroup:sc_checked_text_color="@android:color/white"
+                            segmentedgroup:sc_tint_color="@color/colorPrimary"
+                            android:orientation="horizontal"
+                            segmentedgroup:sc_border_width="2dp"
+                            segmentedgroup:layout_constraintRight_toRightOf="parent"
+                            segmentedgroup:layout_constraintTop_toTopOf="parent"
+                            segmentedgroup:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            segmentedgroup:sc_corner_radius="5dp">
+
+                            <CheckBox
+                                android:id="@+id/seg_used"
+                                android:button="@android:color/transparent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/segment_used"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:checked="@={viewModel.stepUsed}"
+                                />
+
+                            <CheckBox
+                                android:id="@+id/seg_unused"
+                                android:button="@android:color/transparent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/segment_unused"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:checked="@={viewModel.stepUnused}"
+                                />
+
+
+                            <CheckBox
+                                android:id="@+id/seg_removed"
+                                android:button="@android:color/transparent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/segment_removed"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:paddingStart="20dp"
+                                android:paddingEnd="20dp"
+                                android:checked="@={viewModel.stepRemoved}"
+                                />
+
+                        </info.hoang8f.android.segmented.SegmentedGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_margin="14dp"
+                        android:gravity="bottom"
+                        android:text="@string/user" />
+
+                    <include layout="@layout/cell_line" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/corp"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{@string/userForm(viewModel.searchSlipOption.regCorpNm, viewModel.searchSlipOption.regCorpNo)}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/part"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{@string/userForm(viewModel.searchSlipOption.regPartNm, viewModel.searchSlipOption.regPartNo)}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/name"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{@string/userForm(viewModel.searchSlipOption.regUserNm, viewModel.searchSlipOption.regUserId)}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <include layout="@layout/cell_line" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/bg_cell"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:text="@string/search"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:onClick="@{() -> activity.apply()}"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

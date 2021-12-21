@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="viewModel"
+            type="com.officeslip.ui.property.PropertyViewModel" />
+
+        <variable
+            name="activity"
+            type="com.officeslip.ui.property.PropertyActivity" />
+        
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnClose"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> activity.closeActivity()}"
+                        android:padding="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_close"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white"
+
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/mtl_close"
+                    app:layout_constraintRight_toLeftOf="@id/mtl_apply"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/view_tvSdocName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@={viewModel.slipInfo.data.sdocName}"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+                </HorizontalScrollView>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/mtl_apply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:mrl_rippleAlpha="0.1"
+                    app:mrl_rippleColor="@android:color/white"
+                    android:visibility="invisible"
+                    app:mrl_rippleDelayClick="false"
+                    app:mrl_rippleDimension="14dp">
+
+                    <ImageButton
+                        android:id="@+id/view_btnRegister"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:padding="14dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_check"
+                        android:textColor="@android:color/white"
+                        tint="@android:color/white"
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/viewBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_margin="14dp"
+                        android:gravity="bottom"
+                        android:text="" />
+
+                    <include layout="@layout/cell_line" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/property_cabinet"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvCabinet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@={viewModel.slipInfo.data.regTime, default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/corp"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:maxWidth="260dp"
+                            android:id="@+id/view_tvCorp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{TextUtils.isEmpty(viewModel.slipInfo.data.regCorpNo) ? `` : @string/slipItemForm(viewModel.slipInfo.data.regCorpNm, viewModel.slipInfo.data.regCorpNo), default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/part"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvPart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{TextUtils.isEmpty(viewModel.slipInfo.data.regPartNo) ? `` : @string/slipItemForm(viewModel.slipInfo.data.regPartNm, viewModel.slipInfo.data.regPartNo), default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/part"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{TextUtils.isEmpty(viewModel.slipInfo.data.regUserId) ? `` : @string/slipItemForm(viewModel.slipInfo.data.regUserNm, viewModel.slipInfo.data.regUserId), default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_margin="14dp"
+                        android:gravity="bottom"
+                        android:text="" />
+
+                    <include layout="@layout/cell_line" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/property_jdocno"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvJdocNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{viewModel.slipInfo.data.jdocNo, default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/slipKind"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvSlipKind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{TextUtils.isEmpty(viewModel.slipInfo.data.slipKindNo) ? `` : @string/slipItemForm(viewModel.slipInfo.data.slipKindNm, viewModel.slipInfo.data.slipKindNo), default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/sdoc_step"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvSdocStep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{TextUtils.equals(viewModel.slipInfo.data.sdocStep, `0`) ? @string/segment_unused: TextUtils.equals(viewModel.slipInfo.data.sdocStep, `1`) ? @string/segment_unused: TextUtils.equals(viewModel.slipInfo.data.sdocStep, `2`) ? @string/segment_used: TextUtils.equals(viewModel.slipInfo.data.sdocStep, `3`) ? @string/segment_submit: TextUtils.equals(viewModel.slipInfo.data.sdocStep, `4`) ? @string/segment_complete: TextUtils.equals(viewModel.slipInfo.data.sdocStep, `5`) ? @string/segment_denial: TextUtils.equals(viewModel.slipInfo.data.sdocStep, `6`) ? @string/segment_withdraw: TextUtils.equals(viewModel.slipInfo.data.sdocStep, `9`) ? @string/segment_removed: @string/segment_unused, default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/property_permission"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvPermission"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{TextUtils.equals(viewModel.slipInfo.data.sdocSecu, `0`) ? @string/permission_individual: TextUtils.equals(viewModel.slipInfo.data.sdocSecu, `1`) ? @string/permission_part: TextUtils.equals(viewModel.slipInfo.data.sdocSecu, `2`) ? @string/permission_common: TextUtils.equals(viewModel.slipInfo.data.sdocSecu, `3`) ? @string/permission_accounting: @string/permission_individual, default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_cell">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginLeft="14dp"
+                            android:text="@string/property_device"
+                            android:textColor="@color/darkGrey"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/view_tvDevice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginRight="14dp"
+                            android:text="@{TextUtils.equals(viewModel.slipInfo.data.sdocDevice.toUpperCase(), `IO`) ? @string/device_ios: TextUtils.equals(viewModel.slipInfo.data.sdocDevice.toUpperCase(), `AN`) ? @string/device_android: TextUtils.equals(viewModel.slipInfo.data.sdocDevice.toUpperCase(), `SV`) ? @string/device_server: TextUtils.equals(viewModel.slipInfo.data.sdocDevice.toUpperCase(), `PC(0)`) ? @string/device_pc_0: TextUtils.equals(viewModel.slipInfo.data.sdocDevice.toUpperCase(), `PC(1)`) ? @string/device_pc_1: TextUtils.equals(viewModel.slipInfo.data.sdocDevice.toUpperCase(), `PC(2)`) ? @string/device_pc_2: TextUtils.equals(viewModel.slipInfo.data.sdocDevice.toUpperCase(), `PC(3)`) ? @string/device_pc_3 : ``, default=``}"
+                            android:textColor="@color/textColor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

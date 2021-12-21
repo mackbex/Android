@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="Panels">
+        <attr format="string" name="title"/>
+        <attr format="reference" name="icon"/>
+    </declare-styleable>
+</resources>

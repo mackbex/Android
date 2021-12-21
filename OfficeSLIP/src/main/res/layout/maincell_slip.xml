@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="addSlip" type="android.view.View.OnClickListener"/>
+        <variable name="addCamera" type="android.view.View.OnClickListener"/>
+        <variable name="addGallery" type="android.view.View.OnClickListener"/>
+        <variable name="selectSlip" type="android.view.View.OnClickListener"/>
+        <variable name="removeSlip" type="android.view.View.OnClickListener"/>
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_slipController"
+        android:minHeight="50dp"
+        android:maxHeight="50dp"
+        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
+        android:paddingRight="0dp"
+        android:paddingEnd="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_cell"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/view_rippleBtnCameraAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:mrl_rippleColor="#ff000000"
+            app:mrl_rippleAlpha="0.05"
+            app:mrl_rippleDimension="14dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:mrl_rippleDelayClick="false"
+            >
+            <ImageButton
+                android:id="@+id/view_btnCameraAdd"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_add_camera"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:padding="12dp"
+                android:onClick="@{addCamera}"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/view_rippleBtnGalleryAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:mrl_rippleColor="#ff000000"
+            app:mrl_rippleAlpha="0.05"
+            app:mrl_rippleDimension="14dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/view_rippleBtnCameraAdd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:mrl_rippleDelayClick="false"
+            >
+            <ImageButton
+                android:id="@+id/view_btnGalleryAdd"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_add_gallery"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:padding="12dp"
+                android:onClick="@{addGallery}"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+<!--        <com.balysv.materialripple.MaterialRippleLayout-->
+<!--            android:id="@+id/view_rippleBtnAdd"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            app:mrl_rippleColor="#ff000000"-->
+<!--            app:mrl_rippleAlpha="0.05"-->
+<!--            app:mrl_rippleDimension="14dp"-->
+<!--            android:layout_marginStart="0dp"-->
+<!--            android:layout_marginLeft="0dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:mrl_rippleDelayClick="false"-->
+<!--            >-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/view_btnAdd"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/ic_add"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:padding="12dp"-->
+<!--            android:onClick="@{addSlip}"-->
+<!--            />-->
+<!--        </com.balysv.materialripple.MaterialRippleLayout>-->
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/view_rippleBtnRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:mrl_rippleColor="#ff000000"
+            app:mrl_rippleAlpha="0.05"
+            app:mrl_rippleDimension="14dp"
+            app:layout_constraintRight_toLeftOf="@id/view_rippleBtnSlipSelect"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mrl_rippleDelayClick="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"
+            >
+        <ImageButton
+            android:id="@+id/view_btnRemove"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_trash"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:padding="12dp"
+            android:onClick="@{removeSlip}"
+            />
+        </com.balysv.materialripple.MaterialRippleLayout>
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/view_rippleBtnSlipSelect"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            app:mrl_rippleColor="#ff000000"
+            app:mrl_rippleAlpha="0.05"
+            app:mrl_rippleDimension="14dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mrl_rippleDelayClick="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+
+            >
+            <TextView
+                android:id="@+id/view_textSlipSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:onClick="@{selectSlip}"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+        <androidx.appcompat.widget.SwitchCompat
+            android:visibility="gone"
+            android:id="@+id/view_switchShowRemoveBtn"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingRight="6dp"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_thumb"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_cell"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/view_slipController"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

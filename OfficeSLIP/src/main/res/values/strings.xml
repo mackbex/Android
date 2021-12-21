@@ -1,0 +1,225 @@
+<resources>
+    <string name="taejoon" translatable="false">태준제약</string>
+    <string name="acuzen" translatable="false">아큐젠</string>
+    <string name="gcss" translatable="false">GCSS</string>
+    <string name="qus" translatable="false">QUS</string>
+
+    <string name="app_name">전자증빙</string>
+    <string name="confirm">확인</string>
+    <string name="ok">OK</string>
+    <string name="exit">Exit</string>
+    <string name="cancel">취소</string>
+    <string name="checking_application_update">업데이트 확인중..</string>
+    <string name="downloading_application">업데이트 다운로드 중..</string>
+    <string name="emp_no">EMP No.</string>
+    <string name="toggle_autologin">자동 로그인</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="failed_connect_agent">에이전트 통신에 실패했습니다.</string>
+    <string name="failed_connect_login_server" translatable="false">로그인 서버 통신에 실패했습니다.</string>
+    <string name="input_id">아이디를 입력하세요.</string>
+    <string name="input_password">비밀번호를 입력하세요.</string>
+    <string name="select_corp">법인을 선택하세요.</string>
+    <string name="failed_login_no_user">로그인에 실패했습니다.\n아이디와 비밀번호를 확인하세요.</string>
+    <string name="failed_login_unknown_error">로그인에 실패했습니다.</string>
+    <string name="failed_unknown_user">유저정보 조회 실패했습니다.</string>
+    <string name="failed_update_user_info">유저정보 갱신에 실패했습니다.</string>
+    <string name="failed_access_sqlite">내부 데이터 접근에 실패했습니다.</string>
+    <string name="failed_get_slipkind">증빙 종류 조회에 실패했습니다.</string>
+    <string name="in_progress">처리중..</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="add_slip">전자증빙 추가</string>
+    <string name="search_slip">전자증빙 조회</string>
+    <string name="setting">설정</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Photo Library</string>
+    <string name="logout">로그아웃</string>
+    <string name="logout_confirm">로그아웃 하시겠습니까?</string>
+    <string name="document_info">문서 정보</string>
+    <string name="corp">법인</string>
+    <string name="part">부서</string>
+    <string name="id">ID</string>
+    <string name="userForm">%1$s (%2$s)</string>
+    <string name="slipKindForm">%1$s (%2$s)</string>
+    <string name="searchUserForm">%1$s (%2$s)</string>
+    <string name="searchUserForm_corp">%1$s - %2$s</string>
+    <string name="slipItemForm">%1$s (%2$s)</string>
+    <string name="slipIndexForm" translatable="false">(%1$s/%2$s)</string>
+    <string name="slipTitleForm" translatable="false">%1$s (%2$s of %3$s)</string>
+    <string name="slipKind">증빙종류</string>
+    <string name="sdocName">증빙 명</string>
+    <string name="input_sdocName">증빙 명을 입력하세요.</string>
+    <string name="slip">증빙</string>
+    <string name="select">선택</string>
+    <string name="select_slipkind">증빙종류 선택</string>
+    <string name="alert_select_slipkind">증빙종류를 선택하세요.</string>
+    <string name="input_slipkind_search">증빙종류 or 증빙코드를 입력하세요.</string>
+    <string name="input_slip_result_search">증빙 명을 입력하세요.</string>
+    <string name="error_no_camera_feature">카메라가 장착되지 않은 디바이스입니다.</string>
+    <string name="error_add_image">이미지 로딩에 실패했습니다.</string>
+    <string name="error_failed_load_image">이미지 가져오기에 실패했습니다.</string>
+    <string name="failed_load_image">이미지 로딩에 실패했습니다.</string>
+    <string name="failed_crop_image">이미지 변환에 실패했습니다.</string>
+    <string name="failed_detect_document">문서 인식에 실패했습니다.</string>
+    <string name="remove">삭제</string>
+    <string name="edit">편집</string>
+    <string name="submit_slip">전송</string>
+    <string name="input_corp">법인을 선택해주세요.</string>
+    <string name="input_part">부서를 선택해주세요.</string>
+    <string name="input_user">사번을 선택해주세요.</string>
+    <string name="input_kind">증빙종류를 입력해주세요.</string>
+    <string name="input_sdoc_name">메모를 입력해주세요.</string>
+    <string name="err_input_data">입력 데이터 유효성 체크에 실패했습니다.</string>
+    <string name="err_add_slip">증빙을 추가해주세요.</string>
+    <string name="progress_upload_original">원본 이미지 등록중..</string>
+    <string name="upload_failed_upload_slip">원본 이미지 등록에 실패했습니다.</string>
+    <string name="progress_upload_thumb">썸네일 이미지 등록중..</string>
+    <string name="upload_failed_upload_thumb">썸네일 이미지 등록에 실패했습니다.</string>
+    <string name="upload_failed_create_thumb">썸네일 생성에 실패했습니다.</string>
+    <string name="progress_upload_slipdoc">증빙서 등록중..</string>
+    <string name="progress_upload_addfile">첨부파일 등록중..</string>
+    <string name="upload_failed_upload_slipdoc">증빙서 등록에 실패했습니다.</string>
+    <string name="upload_failed_upload_addfile">첨부파일 등록에 실패했습니다.</string>
+    <string name="upload_failed_create_slip_key">증빙 키 생성에 실패했습니다.</string>
+    <string name="upload_success_slip">증빙을 등록했습니다.</string>
+    <string name="btn_swipe_remove">삭제</string>
+    <string name="btn_swipe_move">전달</string>
+    <string name="btn_swipe_copy">복사</string>
+    <string name="btn_swipe_property">속성</string>
+    <string name="sliplist_sdoctype">증빙종류 : </string>
+    <string name="sliplist_regtime">일자 : </string>
+    <string name="sliplist_used">사용여부 : </string>
+    <string name="sliplist_folder">구분 : </string>
+    <string name="sliplist_partname">부서 : </string>
+    <string name="sliplist_reguser">등록자 : </string>
+    <string name="failed_get_search_slip">증빙 조회에 실패했습니다.</string>
+    <string name="segment_image">증빙</string>
+    <string name="segment_file">파일</string>
+    <string name="folder_slipdoc">증빙</string>
+    <string name="folder_addfile">파일</string>
+    <string name="failed_remove_slip">증빙 삭제에 실패했습니다.</string>
+    <string name="failed_download_file">첨부파일 다운로드에 실패했습니다.</string>
+    <string name="success_download_file">첨부파일을 다운로드 했습니다.</string>
+    <string name="failed_access_download_dir">첨부파일 다운로드 폴더 접근에 실패했습니다.</string>
+    <string name="confirm_add_slip">증빙을 등록하시겠습니까?</string>
+    <string name="confirm_remove_slip">해당 증빙을 삭제하시겠습니까?</string>
+    <string name="select_slip_to_remove">삭제할 증빙을 선택하세요.</string>
+    <string name="officeslip">전자증빙</string>
+    <string name="failed_get_scheme_data">스키마 데이터 로드에 실패했습니다.</string>
+    <string name="navi_menu_main" translatable="false">메인</string>
+    <string name="navi_title_add" translatable="false">등록</string>
+    <string name="navi_menu_seminar_add" translatable="false">제품설명회 사진 추가</string>
+    <string name="navi_menu_search_slip" translatable="false">전자증빙 조회</string>
+    <string name="navi_menu_receive_slip" translatable="false">증빙 접수</string>
+    <string name="navi_menu_seminar_search" translatable="false">제품설명회 사진 조회</string>
+    <string name="navi_menu_camera" translatable="false">카메라</string>
+    <string name="navi_menu_gallery" translatable="false">갤러리</string>
+    <string name="navi_menu_search_add" translatable="false">서버조회 추가</string>
+    <string name="navi_menu_lecture" translatable="false">학술증빙 추가</string>
+    <string name="navi_menu_search" translatable="false">조회</string>
+    <string name="navi_title_general" translatable="false">일반</string>
+    <string name="confirm_cancel_work" translatable="false">작업을 취소하시겠습니까?</string>
+    <string name="confirm_exit" translatable="false">앱을 종료하시겠습니까?</string>
+    <string name="set_search_option" translatable="false">조회 조건 설정</string>
+    <string name="detecting_document" translatable="false">문서 감지 중..</string>
+    <string name="no_selected_slip" translatable="false">선택된 증빙이 없습니다.</string>
+    <string name="failed_copy_original_slipdoc" translatable="false">증빙서 원본 복사에 실패했습니다.</string>
+    <string name="user_canceled" translatable="false">작업을 취소했습니다.</string>
+    <string name="progress_copy_slipdoc" translatable="false">증빙서 복사 중..</string>
+    <string name="main_seminar_cnt" translatable="false">제품설명회 사진</string>
+    <string name="pl_cannot_upload_seminar" translatable="false">PL전표는 제품설명회 업로드 이용이 불가합니다.</string>
+    <string name="main_lecture_cnt" translatable="false">학술증빙</string>
+    <string name="main_receipt_cnt" translatable="false">영수증</string>
+    <string name="main_etc_cnt" translatable="false">기타</string>
+    <string name="failed_get_slipdoc_info" translatable="false">증빙서 정보 가져오기에 실패했습니다.</string>
+    <string name="no_slip_to_show" translatable="false">조회할 원본증빙이 없습니다.</string>
+    <string name="about" translatable="false">ABOUT</string>
+    <string name="version" translatable="false">Version</string>
+    <string name="developer" translatable="false">Developer</string>
+    <string name="developer_val" translatable="false">(주)우남소프트</string>
+    <string name="bug_report" translatable="false">Bug Report</string>
+    <string name="sponser" translatable="false">for (주)태준제약</string>
+    <string name="detect_document" translatable="false">문서감지</string>
+    <string name="upload_seminar_original" translatable="false">제품설명회 원본 업로드</string>
+    <string name="confirm_send_bug_report" translatable="false">로그를 전송하시겠습니까?</string>
+    <string name="failed_uplaod_bug_report" translatable="false">로그파일 전송에 실패했습니다.</string>
+    <string name="no_bug_report" translatable="false">전송할 로그파일이 없습니다.</string>
+    <string name="success_uplaod_bug_report" translatable="false">로그파일 전송이 완료되었습니다.\n 번호 : </string>
+    <string name="new_version_detected_server" translatable="false">새로운 버전이 업데이트 되었습니다.\n확인을 누르시면 앱을 업데이트 합니다.</string>
+    <string name="new_version_detected_store" translatable="false">새로운 버전이 업데이트 되었습니다.\n스토어에서 업데이트 하세요.</string>
+    <string name="search_period" translatable="false">조회 기간</string>
+    <string name="from_date" translatable="false">시작일</string>
+    <string name="to_date" translatable="false">종료일</string>
+    <string name="user" translatable="false">사용자</string>
+    <string name="name" translatable="false">사용자 명</string>
+    <string name="search" translatable="false">검색</string>
+    <string name="segment_used" translatable="false">사용</string>
+    <string name="segment_unused" translatable="false">미사용</string>
+    <string name="segment_submit" translatable="false">상신</string>
+    <string name="segment_complete" translatable="false">완료</string>
+    <string name="segment_withdraw" translatable="false">회수</string>
+    <string name="segment_denial" translatable="false">반려</string>
+    <string name="segment_removed" translatable="false">삭제</string>
+    <string name="status" translatable="false">상태</string>
+    <string name="category" translatable="false">구분</string>
+    <string name="resetPW" translatable="false">비밀번호 초기화 신청</string>
+    <string name="confirm_resetPW" translatable="false">비밀번호를 초기화 하시겠습니까?</string>
+    <string name="failed_resetPW" translatable="false">비밀번호 초기화에 실패했습니다.</string>
+    <string name="success_resetPW" translatable="false">비밀번호 초기화에 성공했습니다.</string>
+    <string name="manager" translatable="false">담당자</string>
+    <string name="memo" translatable="false">메모</string>
+    <string name="input_memo" translatable="false">메모를 입력하세요.</string>
+    <string name="select_user" translatable="false">사용자 조회</string>
+    <string name="input_user_info" translatable="false">이름 or 사번을 입력하세요.</string>
+    <string name="alert_select_user" translatable="false">사용자를 선택하세요.</string>
+    <string name="failed_get_user_info" translatable="false">유저 리스트 조회에 실패했습니다.</string>
+    <string name="user_cancelled" translatable="false">작업을 취소했습니다.</string>
+    <string name="option" translatable="false">OPTION</string>
+    <string name="submit_doc" translatable="false">제출</string>
+    <string name="split_slip" translatable="false">개별</string>
+    <string name="history" translatable="false">히스토리</string>
+    <string name="property" translatable="false">속성</string>
+    <string name="barcode_forced" translatable="false">%1$s 항목은 필수 제출 항목입니다.</string>
+    <string name="failed_create_barcode" translatable="false">바코드 생성에 실패했습니다.</string>
+    <string name="download_attach_not_allowed_on_mobile" translatable="false">첨부파일은 PC에서 확인 가능합니다.</string>
+    <string name="property_cabinet" translatable="false">등록 일자</string>
+    <string name="property_jdocno" translatable="false">전표번호</string>
+    <string name="property_permission" translatable="false">권한</string>
+    <string name="permission_individual" translatable="false">개인</string>
+    <string name="permission_part" translatable="false">부서</string>
+    <string name="permission_common" translatable="false">공용</string>
+    <string name="sdoc_step" translatable="false">상태</string>
+    <string name="permission_accounting" translatable="false">회계</string>
+    <string name="property_device" translatable="false">등록장치</string>
+    <string name="device_android" translatable="false">Mobile (Android)</string>
+    <string name="device_ios" translatable="false">Mobile (IOS)</string>
+    <string name="device_server" translatable="false">Server</string>
+    <string name="device_pc_0" translatable="false">PC (PTI)</string>
+    <string name="device_pc_1" translatable="false">PC (Capture)</string>
+    <string name="device_pc_2" translatable="false">PC (URL)</string>
+    <string name="device_pc_3" translatable="false">PC (URL)</string>
+    <string name="title_copy" translatable="false">증빙 복사</string>
+    <string name="title_move" translatable="false">증빙 전달</string>
+    <string name="confirm_copy_slip" translatable="false">증빙을 복사하시겠습니까?</string>
+    <string name="confirm_move_slip" translatable="false">증빙을 전달하시겠습니까?</string>
+    <string name="failed_copy_slip" translatable="false">증빙복사에 실패했습니다.</string>
+    <string name="failed_move_slip" translatable="false">증빙전달에 실패했습니다.</string>
+    <string name="qr_receive" translatable="false">접수관리</string>
+    <string name="qr_date" translatable="false">접수일자</string>
+    <string name="jdoc_no" translatable="false">전표번호</string>
+    <string name="slip_info" translatable="false">증빙정보</string>
+    <string name="slip_date" translatable="false">증빙일자</string>
+    <string name="slip_kind" translatable="false">증빙종류</string>
+    <string name="qr_status" translatable="false">상태</string>
+    <string name="reg_user" translatable="false">등록자</string>
+    <string name="failed_get_qr_info" translatable="false">증빙 정보 로드에 실패했습니다.</string>
+    <string name="waiting" translatable="false">대기</string>
+    <string name="submit" translatable="false">접수</string>
+    <string name="cancel_submit" translatable="false">접수 취소</string>
+    <string name="failed_change_qr_recv_stat" translatable="false">변경에 실패했습니다.</string>
+    <string name="confirm_change_qr_recv_stat" translatable="false">접수 상태를 변경하시겠습니까?</string>
+    <string name="use" translatable="false">사용</string>
+    <string name="slip_result_user" translatable="false">사용자 : </string>
+    <string name="title" translatable="false">제목</string>
+    <string name="input_title" translatable="false">제목을 입력하세요.</string>
+</resources>
